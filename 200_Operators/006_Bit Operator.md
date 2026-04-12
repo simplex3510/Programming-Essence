@@ -78,7 +78,7 @@ int orResult = op1 | op2;  // ?
 
 값 `1101`을 10진수로 표현하면 `13`이 된다.
 
-## `^` (XOR) Operator : 베타적 논리합 연산자
+## `^` (XOR) Operator : 배타적 논리합 연산자
 
 ```cs
 byte op1 = 12;  // 0000 1100
