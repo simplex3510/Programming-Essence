@@ -17,11 +17,11 @@ uint num2 = 20;
 uint max = 0;
 if (num1 > num2)
 {
-    max = num1;
+   max = num1;
 }
 else
 {
-    max = num2;
+   max = num2;
 }
 ```
 

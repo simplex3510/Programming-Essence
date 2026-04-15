@@ -16,22 +16,26 @@
 반환된 값은, 표현식에 자리에 남는 것이 핵심이다.  
 
 > **평가(Evaulate)**  
-    평가의 간단한 이해는 "결과를 도출하는 과정 또는 그러한 행위"를 의미한다.   
+   평가의 간단한 이해는 "결과를 도출하는 과정 또는 그러한 행위"를 의미한다.  
 
 이때 반환의 경우에는 `void`반환을 포함한다.
 
 다음은 대표적인 표현식의 예이다.
+
 * 숫자 그 자체: `10`
 * 산술 연산: `5 + 8`
 * 변수 호출: `damage`
 * 비교(관계): `10 > 5`
 
 그리고 일부 표현식은 단독으로 사용할 수 없다.
+
 ```cs
-3 + 4;      // Compile Error
-age > 19;   // Compile Error
+3 + 4;    // Compile Error
+age > 19;  // Compile Error
 ```
+
 ## 구문(Statement)
+
 구문은 한 줄 이상의 코드로 **실행**되는 집합을 의미한다.  
 즉, 구문은 하나의 **동작을 수행**한다.
 
@@ -42,10 +46,11 @@ age > 19;   // Compile Error
 또는 중괄호(`{}`)를 사용하여 명령의 시작과 끝을 표시한다.
 
 다음은 대표적인 구문의 예이다.
+
 * 선언 및 대입 구문: `float damage = 12.54f;`  
-    (메모리에 공간을 만들고 5를 넣으라는 명령)
+   (메모리에 공간을 만들고 5를 넣으라는 명령)
 * 출력 구문: `Debug.Log($"Damage: {damage}");`  
-    (디버깅 창에 로그를 출력하라는 명령)
+   (디버깅 창에 로그를 출력하라는 명령)
 
 ## Condition (조건)
 
@@ -54,19 +59,19 @@ age > 19;   // Compile Error
 이는, 식이나 문장이 **평가**되어 도출된 결과는 반드시 `bool`타입이어야 한다.  
 즉, `true` 또는 `false`여야 한다.
 
-
 C/C++는 `0`을 `false`로, `0`이 아닌 모든 값을 `true`로 취급한다.  
 C#은 `bool` 타입이 따로 존재하기 때문에, `true`와 `false`를 숫자와 대응시켜 나타내지도 않고 허용하지도 않는다.
 
-# `if` Statement
+## `if` Statement
 
 `if`문은 '조건'을 만족하면, 중괄호(`{}`) 내부의 코드를 수행한다.
 
 문법적 구조는 다음과 같다.
+
 ```cs
 if (condition)
 {
-    // true condition codes...
+   // true condition codes...
 }
 ```
 
@@ -76,50 +81,54 @@ if (condition)
 `if`문의 '조건'을 만족하지 않으면, `else`문의 중괄호(`{}`) 내부의 코드를 수행한다.
 
 문법적 구조는 다음과 같다.
+
 ```cs
 if (condition)
 {
-    // true condition codes...
+   // true condition codes...
 }
 else
 {
-    // false condition codes...
+   // false condition codes...
 }
 ```
 
 `else`는 항상 `if` 구문을 우선적으로 필요로 하며, 단독으로 사용할 수 없다.  
 다음과 같이 `else`를 단독으로 사용하면 컴파일 에러가 발생한다.
+
 ```cs
 else  // Not found Condition - if statement
 {
-    // what the codes...
+   // what the codes...
 }
 ```
+
 에러가 발생하는 이유는 `if`구문에서 선제적으로 '조건'을 판단해야 실행될 수 있는 구문이므로, 조건에 대한 평가 없이 단독으로 사용할 수 없기 때문이다.
 
 ## `else if` Statment
 
 `if` 또는 `else` 구문 내부에 또 다른 분기를 만들 수도 있다.
 즉, 다음과 같이 중첩된 구조를 가질 수 있다.
+
 ```cs
 if (condition1)
 {
-    // true condition1 codes...
+   // true condition1 codes...
 }
 else
 {
-    if (condition2)
-    {
-        // false condition1...
-        // and
-        // true condition2 codes...
-    }
-    else
-    {
-        // false condition1...
-        // and
-        // false condition2 codes...
-    }
+   if (condition2)
+   {
+      // false condition1...
+      // and
+      // true condition2 codes...
+   }
+   else
+   {
+      // false condition1...
+      // and
+      // false condition2 codes...
+   }
 }
 ```
 
@@ -132,43 +141,45 @@ else
 
 문법적 구조와 논리적 흐름은 다음과 같다.  
 또한 이전의 코드는 다음의 코드와 완벽하게 일치한다.
+
 ```cs
 if (condition1)
 {
-    // true condition1 codes...
+   // true condition1 codes...
 }
 else if (condition2)
 {
-    // false condition1...
-    // and
-    // true condition2 codes...
+   // false condition1...
+   // and
+   // true condition2 codes...
 }
 else
 {
-    // false condition1...
-    // and
-    // false condition2 codes...
+   // false condition1...
+   // and
+   // false condition2 codes...
 }
 ```
 
 또한 `if` 구문을 시작으로, `else if`가 반복되며 사용될 수 있다.  
 또한 `else if`와 `else`는 선택적으로 사용될 수 있다.
 
-# **Coding Stadard : `{}`를 반드시 사용**
+## **Coding Stadard : `{}`를 반드시 사용**
 
 앞서 보인 `if`, `else if`, `else` 모두 중괄호(`{}`)를 생략할 수 있다.  
 중괄호의 생략은 `if`, `else if`, `else`의 중괄호 내부 코드가 단 한 줄로 표현이 가능한 경우 가능하다.  
 
 예를 들어 다음과 같다.
+
 ```cs
 int num = 10;
 
 if (num < 10)
-    num = 1;
+   num = 1;
 else if (num > 10)
-    num = 100;
+   num = 100;
 else
-    num = 1000;
+   num = 1000;
 ```
 
 하지만 이러한 문법적 허용이 반드시 좋은 것만은 아니다.
@@ -180,14 +191,14 @@ else
 int num = 10;
 
 if (num < 10)
-    num = 1;
-    Debug.Log(num + 1);
+   num = 1;
+   Debug.Log(num + 1);
 else if (num > 10)
-    num = 100;
-    Debug.Log(num + 2);
+   num = 100;
+   Debug.Log(num + 2);
 else
-    num = 1000;
-    Debug.Log(num + 3);
+   num = 1000;
+   Debug.Log(num + 3);
 ```
 
 `num = 1`까지는 `if`문의 범위로 인정되지만, `Debug.Log(num + 1);`는 독립적인 코드로 인식한다.
@@ -195,20 +206,21 @@ else
 그렇다면, 이후에 위치한 `else if`는 앞선 `if`에 찾을 수 없다는 에러가 발생된다.
 
 즉, 위 코드는 다음과 같은 코드로 인식된다.
+
 ```cs
 int num = 10;
 
 if (num < 10)
-    num = 1;
+   num = 1;
 
 Debug.Log(num + 1);
 
 else if (num > 10)
-    num = 100;
-    Debug.Log(num + 2);
+   num = 100;
+   Debug.Log(num + 2);
 else
-    num = 1000;
-    Debug.Log(num + 3);
+   num = 1000;
+   Debug.Log(num + 3);
 ```
 
 따라서 컴파일러 입장에서는 `else if`와 `else`가 `if` 없이 사용되고 있다 판단할 수밖에 없기 때문에 필연적으로 에러가 발생하게 된다.
@@ -220,24 +232,24 @@ int num = 10;
 
 if (num < 10)
 {
-    num = 1;
-    Debug.Log(num + 1);
+   num = 1;
+   Debug.Log(num + 1);
 }
 else if (num > 10)
 {
-    num = 100;
-    Debug.Log(num + 2);
+   num = 100;
+   Debug.Log(num + 2);
 }
 else
 {
-    num = 1000;
-    Debug.Log(num + 3);
+   num = 1000;
+   Debug.Log(num + 3);
 }
 ```
 
 이렇듯 처음부터 중괄호를 사용하여 `if`, `else if`, `else`문의 범위를 명확하게 구분해주는 습관은 매우 중요하게 작용한다.
 
-# Short-circuit Evaluation (단락 평가)
+## Short-circuit Evaluation (단락 평가)
 
 효율성을 위해 앞의 조건만으로 결과가 확실하면 뒤의 조건을 평가하지 않는 경우가 발생한다.
 
@@ -248,13 +260,14 @@ else
 `if`문의 조건식은 종종 평가되지 않는 경우가 있다.
 
 예를 들어, 다음과 같은 코드가 있다고 가정한다.
+
 ```cs
 int num1 = 1;
 int num2 = 2;
 
 if ((num1 == 1) || (num2 != 2))
 {
-    // codes...
+   // codes...
 }
 ```
 
@@ -264,13 +277,14 @@ if ((num1 == 1) || (num2 != 2))
 따라서 조건식에서 우항인 `(num2 != 2)`는 평가되지 않고 무시된다.
 
 다른 예를 들어, 표현식의 순서를 바꾼 경우의 코드가 있다고 가정한다.
+
 ```cs
 int num1 = 1;
 int num2 = 2;
 
 if ((num2 != 2) || (num1 == 1))
 {
-    // codes...
+   // codes...
 }
 ```
 
@@ -287,13 +301,14 @@ if ((num2 != 2) || (num1 == 1))
 하지만 첫 번째 조건이 `true`라면, 반드시 두 번째 조건을 평가해야 한다.
 
 예를 들어, 다음과 같은 코드가 있다고 가정한다.
+
 ```cs
 int num1 = 1;
 int num2 = 2;
 
 if ((num2 != 2) && (num1 == 1))
 {
-    // codes...
+   // codes...
 }
 ```
 
@@ -302,38 +317,41 @@ if ((num2 != 2) && (num1 == 1))
 결론적으로 두 번째 조건인 우항을 평가하지 않는다.
 
 다른 예를 들어, 표현식의 순서를 바꾼 경우의 코드가 있다고 가정한다.
+
 ```cs
 int num1 = 1;
 int num2 = 2;
 
 if ((num1 == 1) && (num2 != 2))
 {
-    // codes...
+   // codes...
 }
 ```
 
 위 코드는 첫 번째 조건이 `true`이므로, `&&` 연산의 결과가 불확실하다.
 그러므로 두 번째 조건을 반드시 평가해야 한다.
 
-# De Morgan's laws (드모르간의 법칙)
+## De Morgan's laws (드모르간의 법칙)
 
 논리합(`||`)이나 논리곱(`&&`)으로 연결된 전체 식을 부정(`!`)할 때, 개별 조건의 상태가 반전되면서 연산자도 서로 바뀌는 원리를 '**드모르간의 법칙**'이라고 부른다.
 
 이는 프로그래밍의 조건식에도 마찬가지로 적용된다.
 
 다음의 코드가 있다고 가정한다.
+
 ```cs
 if (!( a == b || c == b))
 {
-    // codes...
+   // codes...
 }
 ```
 
 위 코드를 다르게 표현하면 다음과 같아진다.
+
 ```cs
 if (a != b && c != b)
 {
-    // codes...
+   // codes...
 }
 ```
 
@@ -352,47 +370,49 @@ if (a != b && c != b)
 방금의 예에서 드모르간의 법칙이 작동된 방식은 다음과 같다.
 
 1. `!` 연산자가 각 연산자 `==`, `||`, `==`에게 영향을 준다.
-2.  반전된 연산자들은 `!=`, `&&`, `!=`으로 표현된다.
+2. 반전된 연산자들은 `!=`, `&&`, `!=`으로 표현된다.
 
-# 논리적 중복의 제거
+## 논리적 중복의 제거
 
 아래의 코드는 정상적으로 작동하지만, 불필요하게 조건을 검사하고 있다.
+
 ```cs
 if (90 <= score)
 {
-    // codes...
+   // codes...
 }
 else if (80 <= score && score < 90)
 {
-    // codes...
+   // codes...
 }
 else if (70 <= score && score < 80)
 {
-    // codes...
+   // codes...
 }
 else
 {
-    // codes...
+   // codes...
 }
 ```
 
 위 코드는 다음의 코드와 같이 개선할 수 있다.
+
 ```cs
 if (90 <= score)
 {
-    // codes...
+   // codes...
 }
 else if (80 <= score)
 {
-    // codes...
+   // codes...
 }
 else if (70 <= score)
 {
-    // codes...
+   // codes...
 }
 else
 {
-    // codes...
+   // codes...
 }
 ```
 
