@@ -44,10 +44,11 @@ for (int count = 0; count < PROJECTILE_COUNT; count++)
     즉, `count`가 후위 증가(`++`)이므로, 1을 증가시킨다.
 
 4. **반복**  
-    2번 단계로 다시 돌아가서, 반복문을 진행한다.
+    2번 단계로 실행 순서를 옮겨, 반복문을 진행한다.
 
-즉, 위 코드는 `count`가 `0`에서 `1`, `1`에서 `2`, `2`에서 `3`까지 증가하여 총 3번의 투사체를 발사한다.  
-이때, `count`가 `PROJECTILE_COUNT`보다 작지 않으므로 투사체 발사 로직이 실행되지 않고 반복문을 탈출하게 된다.
+즉, 위 코드는 `count`가 `0`에서 `3`까지 증가하여 총 3번의 투사체를 발사한다.  
+그리고 조건 검사는 `count`가 `0`, `1`, `2`, `3`일 때 실행된다.  
+마지막 검사에서`count`가 `PROJECTILE_COUNT`보다 작지 않으므로 투사체 발사 로직이 실행되지 않고 반복문을 탈출하게 된다.
 
 ## Nested-for statement (중첩 for문)
 
@@ -74,5 +75,44 @@ for (int y = 0, y < sizeCol; y++)
     }
 
     (다음 줄로 이동);
+}
+```
+
+이렇게 
+
+# Best Practice : Iteration
+
+3가지 반복문의 가장 적절한 사용은 다음과 같은 경우가 있다.
+
+* `for` Statement   
+    * 반복문이 시작하는 시점에 범위가 정해진 경우
+
+* `while` Statement
+    * 반복문을 종료하는 시점이 반복문 실행 도중에 결정 될 경우
+
+* `do-while` Statement
+    * `while`과 유사하나, 반드시 한 번은 실행되어야 할 경우
+
+또한 `while`과 다르게, `do-while`은 자주 사용되지 않는다.  
+왜냐하면, `do-while`의 조건을 나중에 검사하는 특성을 `while`로도 충분히 구현이 가능하기 때문이다.  
+따라서 다음의 코드는 동일하게 작동한다.
+
+```cs
+// do-while Statement
+do
+{
+    실행할 코드;
+} while (반복 조건식);
+
+
+// while Statement
+while (true)
+{
+    실행할 코드;
+
+    if (반복 조건식 == false)
+    {
+        break;
+    }
 }
 ```

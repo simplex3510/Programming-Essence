@@ -36,14 +36,15 @@ while (count < PROJECTILE_COUNT)
 
 1. **반복 조건 검사**  
     `count`의 값이 `PROJECTILE_COUNT`보다 작은지 검사한다.  
-    반복 조건이 참일 경우, 내부에 있는 투사체 발사 로직을 실행한다.  
+    반복 조건이 참일 경우, 내부 코드를 실행한다.  
     반복 조건이 거짓일 경우, 반복문을 탈출한다.  
 
 2. **반복**  
-    1번 단계로 다시 돌아가서, 반복문을 진행한다.
+    1번 단계로 실행 순서를 옮겨, 반복문을 진행한다.
 
-즉, 위 코드는 `count`가 `0`에서 `1`, `1`에서 `2`, `2`에서 `3`까지 증가하여 총 3번의 투사체를 발사한다.  
-이때, `count`가 `PROJECTILE_COUNT`보다 작지 않으므로 투사체 발사 로직이 실행되지 않고 반복문을 탈출하게 된다.  
+즉, 위 코드는 `count`가 `0`에서 `3`까지 증가하여 총 3번의 투사체를 발사한다.  
+그리고 조건 검사는 `count`가 `0`, `1`, `2`, `3`일 때 실행된다.  
+마지막 검사에서 `count`가 `PROJECTILE_COUNT`보다 작지 않으므로 투사체 발사 로직이 실행되지 않고 반복문을 탈출하게 된다.  
 
 ## 무한 반복 (Infinite Loop)
 
@@ -53,10 +54,22 @@ while (count < PROJECTILE_COUNT)
 이는 곧, 사용자가 ID가 일치하지 않다면 계속 로그인 시도가 가능하는 것이다.  
 
 ```cs
-string password = null;
+string password = "qwer1234";
+string userInput
 
-while ()
+while (true)
 {
-    
+    userInput = (사용자 입력);
+
+    if (userInput = password)
+    {
+        Debug.Log("Correct.");
+        break;
+    }
+
+    Debug.Log("Wrong password.");
 }
 ```
+
+이때 주의할 점은, `break`는 오직 `switch/case`문과 반복문에 영향을 미치며 가장 가까운 구문을 탈출한다.  
+따라서 `break`가 영향을 미치는 구문은 `while`문이다.
