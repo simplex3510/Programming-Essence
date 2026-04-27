@@ -99,7 +99,7 @@ double Power(ref double num, int exponentNum)
 
 정리하자면, 피호출자(receiver)인 `Power`의 매개변수 값이 변경되면 호출자(caller)의 인자에 반영된다.
 
-### `unsafe` and Pointer(포인터)
+### `unsafe`와 Pointer(포인터)
 
 위 `ref` 키워드를 포인터 개념으로 바꾸어 표현할 수 있다.
 근본적으로, `ref`는 포인터를 사용한다.
